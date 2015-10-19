@@ -79,7 +79,7 @@ hitButton.addEventListener("click", function(e) {
 	if(playerValue > 21) {
 		alert("You Lose");
 		console.log(playerValue);
-		play();
+		// play();
 	} 
 });
 

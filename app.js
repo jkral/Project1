@@ -64,10 +64,10 @@ for (var i = 0; i < playerHand.length; i++) {
 	console.log(dealerValue);
 //========= starting hands are createdd and hand values are logged ====================
 
-
-//====== when hit button is clicked =================
-var hit = function() {
-
+var hitButton = document.getElementById('hitButton');
+                                      
+hitButton.addEventListener("click", function(e) {
+    
 	playerHand.push(shuffledDeck.pop());
 
 	var playerValue = 0;
@@ -79,23 +79,19 @@ var hit = function() {
 	if(playerValue > 21) {
 		alert("You Lose");
 		console.log(playerValue);
-		// play();
+		play();
 	} 
-}
-
-hit();
-
-//=========== hit button ========================
+});
 
 
-//============ STAY button starts dealer loop =============
+var stayButton = document.getElementById('stayButton');
+                                      
+stayButton.addEventListener("click", function(e) {
+    
+	while(dealerValue < 17) {
 
-var stay = function() {
-
-	while(dealerValue < 17 & dealerValue < 22) {
-
-//  pop a card and update dealer value
 	dealerHand.push(shuffledDeck.pop());
+	dealerValue = 0;
 	for (var i = 0; i < dealerHand.length; i++) {	
 	dealerValue += dealerHand[i].value;
 };
@@ -106,27 +102,115 @@ var stay = function() {
 
 	if(dealerValue > 21) {
 
-		console.log("You win! Dealer busted!");
+		console.log(dealerValue)
+		alert("You win! Dealer busted!");
+		
 	};
 
-	if(dealerValue > 16 & dealerValue < 22) {
+	if(dealerValue > 16 && dealerValue < 22) {
 
 		if(dealerValue > playerValue) {
 
+			console.log(dealerValue);
 			alert("Dealer wins. Dealer has higher value.");
-		} else if(dealerValue === playerValue) {
 
+		} else if( dealerValue === playerValue ) {
+
+			console.log(dealerValue);
 			alert("PUSH!")
 		} else {
+
+			console.log(dealerValue);
 			alert("Player wins. Player has higher value.");
+			
 		}
-	};
+	}
 }
-};
-	// while(dealerValue)
+});
+
+// $('#hitButton').addEventListener('click', function () {
+
+// 	playerHand.push(shuffledDeck.pop());
+
+// 	var playerValue = 0;
+// 	for (var i = 0; i < playerHand.length; i++) {	
+// 	playerValue += playerHand[i].value;
+// };
+// 	console.log(playerValue);
+
+// 	if(playerValue > 21) {
+// 		alert("You Lose");
+// 		console.log(playerValue);
+// 		// play();
+// 	} 
+// });
 
 
-stay();
+//====== when hit button is clicked =================
+// var hit = function() {
+
+// 	while(playerHand < 17 & playerHand < 22) {
+
+// 	playerHand.push(shuffledDeck.pop());
+
+// 	var playerValue = 0;
+// 	for (var i = 0; i < playerHand.length; i++) {	
+// 	playerValue += playerHand[i].value;
+// };
+// 	console.log(playerValue);
+
+// 	if(playerValue > 21) {
+// 		alert("You Lose");
+// 		console.log(playerValue);
+// 		// play();
+// 	} 
+// }
+// }
+
+// hit();
+
+//=========== hit button ========================
+
+
+//============ STAY button starts dealer loop =============
+
+// var stay = function() {
+
+// 	while(dealerValue < 17 & dealerValue < 22) {
+
+// //  pop a card and update dealer value
+// 	dealerHand.push(shuffledDeck.pop());
+// 	dealerValue = 0;
+// 	for (var i = 0; i < dealerHand.length; i++) {	
+// 	dealerValue += dealerHand[i].value;
+// };
+// 	console.log(dealerValue);
+
+
+// check for winner
+
+// 	if(dealerValue > 21) {
+
+// 		console.log("You win! Dealer busted!");
+// 	};
+
+// 	if(dealerValue > 16 & dealerValue < 22) {
+
+// 		if(dealerValue > playerValue) {
+
+// 			alert("Dealer wins. Dealer has higher value.");
+// 		} else if(dealerValue === playerValue) {
+
+// 			alert("PUSH!")
+// 		} else {
+// 			alert("Player wins. Player has higher value.");
+// 		}
+// 	}
+// }
+// };
+
+// stay();
+
 
 
 
